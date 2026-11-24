@@ -16,7 +16,7 @@ optical_hole = 30;
 mirror_hole = 40;
 flange_thickness = 3;
 
-total_optical_length = 130; // 150 original
+total_optical_length = 115; // 150 original, 130 modified, 115 hq camera
 flange_gap = 20;
 ifd = flange_gap + 40;
 rol = total_optical_length - ifd;
