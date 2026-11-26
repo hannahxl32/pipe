@@ -13,16 +13,12 @@ led_board_width = 50;
 
 translate([0,0,0])difference() {
     union() {
-        //translate([-80/2,-25,0])cube([80,50,10]);
-        hull() {
-            translate([-60/2,-50/2,5])rotate([-90,0,0])cylinder(50, 5, 5);
-            translate([60/2,-50/2,5])rotate([-90,0,0])cylinder(50, 5, 5);
-        }
+        translate([-70/2,-25,0])cube([70,50,10]);
     }
     
     
-    // led board inset
-    translate([0,0,5])hull() {
+    // objective board inset
+    translate([0,0,6])hull() {
         
         translate([-led_board_width/2,-led_board_height/2,0])cylinder(15,6,6);
         translate([-led_board_width/2,led_board_height/2,0])cylinder(15,6,6);
@@ -42,16 +38,8 @@ translate([0,0,0])difference() {
     
     translate([0,0,-1])cylinder(20, 30/2, 30/2);
     
-    // central mounts used for attachement to frame!
-    translate([0,mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
-    translate([0,-mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
-    
-    translate([-mounting_holes_height/2,mounting_holes_width/2,-1])cylinder(15, sh_through/2, sh_through/2);
-    translate([mounting_holes_height/2,mounting_holes_width/2,-1])cylinder(15, sh_through/2, sh_through/2);
-    translate([-mounting_holes_height/2,-mounting_holes_width/2,-1])cylinder(15, sh_through/2, sh_through/2);
-    translate([mounting_holes_height/2,-mounting_holes_width/2,-1])cylinder(15, sh_through/2, sh_through/2);
-    translate([-mounting_holes_height/2,mounting_holes_width/2,10+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([mounting_holes_height/2,mounting_holes_width/2,10+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([-mounting_holes_height/2,-mounting_holes_width/2,10+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
-    translate([mounting_holes_height/2,-mounting_holes_width/2,10+1-sh_countersink])cylinder(sh_countersink, sh_through/2, sh_countersink + (sh_through/2));
+    translate([-mounting_holes_height/2,mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
+    translate([mounting_holes_height/2,mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
+    translate([-mounting_holes_height/2,-mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
+    translate([mounting_holes_height/2,-mounting_holes_width/2,-1])cylinder(15, sh_thread/2, sh_thread/2);
 }
