@@ -42,7 +42,7 @@ module flange_holes() {
 
 // V2
 module countersink_cyl() {
-    translate([0,0,-17]) {
+    translate([0,0,-22]) {
         cylinder(mounting_holes_height + 10, sh_through/2, sh_through/2);
         hull () {
             translate([0,0,-5])cylinder(1, (sh_countersink-1) + (sh_through/2), (sh_countersink-1) + (sh_through/2));
@@ -116,17 +116,9 @@ module shell_half() {
 
 difference(){
     union() {
+        translate([ifd/2,0,0])flange();
         translate([-ifd/2,0,0])flange();
-        translate([ifd/2,0,0])hull() {
-            translate([0,5,0])cylinder(shell_thread_hole_thickness, shell_thread_hole_diameter/2, shell_thread_hole_diameter/2);
-            translate([-shell_thread_hole_diameter/2,0,0])cube([shell_thread_hole_diameter, 1,shell_thread_hole_thickness]);
-        }
-        translate([ifd/2,0,0])translate([-20,0,0])cube([40,shell_thickness,shell_height]);
         translate([-10,0,0])cube([20,shell_thickness,shell_height]);
-        
-        translate([-ifd/2,0,0])translate([-20, 0, 0])cube([shell_thickness,10,shell_height]);
-        translate([ifd/2,0,0])translate([20-shell_thickness, 0, 0])cube([shell_thickness,10,shell_height]);
-
 
 
         translate([-50 - shell_width_add,40,0])asymmetric_bolt_post();
@@ -135,11 +127,6 @@ difference(){
 
         shell_half();
         mirror([1,0,0])shell_half();
-
-        translate([30,25,0])cylinder(2.5,5,5);
-        translate([30,45,0])cylinder(2.5,5,5);
-        translate([-30,25,0])cylinder(2.5,5,5);
-        translate([-30,45,0])cylinder(2.5,5,5);
     }
 
     translate([-ifd/2,0,0])flange_holes();
@@ -149,10 +136,4 @@ difference(){
     translate([-50 - shell_width_add,40,0])asymmetric_bolt_post_thread();
     translate([50 + shell_width_add,40,0])rotate([0,0,180])asymmetric_bolt_post_thread();
     translate([0,0,0])rotate([0,0,90])asymmetric_bolt_post_thread();
-
-
-    translate([30,25,0])countersink_cyl();
-    translate([30,45,0])countersink_cyl();
-    translate([-30,25,0])countersink_cyl();
-    translate([-30,45,0])countersink_cyl();
 }
